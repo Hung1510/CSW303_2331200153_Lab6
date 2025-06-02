@@ -1,23 +1,16 @@
 package CSW303_2331200153_Lab6.Factory_Method_Pattern;
 
 import java.time.LocalDate;
-
- class LowPriorityRequest extends MaintenanceRequest
-{
-
-    public void setPriority() {
-        this.priority = "Ignore";
+public class LowPriorityRequest extends MaintenanceRequest {
+    public LowPriorityRequest(String description) {
+        super(description);
+        setPriority("Ignore");
+        setStatus("Done");
+        setExpire(LocalDate.now());
     }
 
-    public void setStatus() {
-        this.status = "Done";
-    }
-
-    public void setExpire() {
-        this.expire = LocalDate.now();
-    }
-
-    public void processRequest() {
+    @Override
+    public void process() {
         System.out.println("Request denied");
     }
 }
